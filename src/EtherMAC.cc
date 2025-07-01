@@ -1,14 +1,29 @@
 #include "EtherMAC.h"
 #include "EthernetFrame_m.h"
-#include "EDFCompare.h"
+#include "AppPackets_m.h"
+
 Define_Module(EtherMAC);
+
+int EDFCompare(cObject *a, cObject *b) {
+    EthernetFrame *fa= check_and_cast<EthernetFrame *>(a);
+    EthernetFrame *fb= check_and_cast<EthernetFrame *>(b);
+    DataPacket *pa = check_and_cast<DataPacket *>(fa->getEncapsulatedPacket());
+    DataPacket *pb = check_and_cast<DataPacket *>(fb->getEncapsulatedPacket());
+    simtime_t ta = pa->getDeadlineAbs();
+    simtime_t tb = pb->getDeadlineAbs();
+    if (ta < tb) return -1;
+    if (ta > tb) return 1;
+    return 0;
+}
 
 void EtherMAC::initialize()
 {
     txstate = TX_STATE_IDLE;
     rxbuf = nullptr;
     datarate = par("datarate");
-    txqueue = cPacketQueue();
+    char nomeCoda[20];
+    sprintf(nomeCoda, "txqueue_%s", getName());
+    txqueue = cPacketQueue(nomeCoda, &EDFCompare);
     ifgdur = 96.0/(double)datarate;
     cValueArray *vlanArray = check_and_cast<cValueArray*>(par("vlans").objectValue());
     for (int i = 0; i < vlanArray->size(); ++i) {
