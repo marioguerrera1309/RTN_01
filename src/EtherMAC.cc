@@ -1,6 +1,6 @@
 #include "EtherMAC.h"
 #include "EthernetFrame_m.h"
-
+#include "EDFCompare.h"
 Define_Module(EtherMAC);
 
 void EtherMAC::initialize()
@@ -10,7 +10,6 @@ void EtherMAC::initialize()
     datarate = par("datarate");
     txqueue = cPacketQueue();
     ifgdur = 96.0/(double)datarate;
-    //txqueue.setup(new EDFCompare());
     cValueArray *vlanArray = check_and_cast<cValueArray*>(par("vlans").objectValue());
     for (int i = 0; i < vlanArray->size(); ++i) {
         vlans.push_back((int)vlanArray->get(i).intValue());
