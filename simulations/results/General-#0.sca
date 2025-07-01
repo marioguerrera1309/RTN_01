@@ -1,8 +1,8 @@
 version 3
-run General-0-20250701-21:44:20-13320
+run General-0-20250701-22:58:42-8748
 attr configname General
-attr datetime 20250701-21:44:20
-attr datetimef 20250701-214420
+attr datetime 20250701-22:58:42
+attr datetimef 20250701-225842
 attr experiment General
 attr inifile sim1.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Sim1
-attr processid 13320
+attr processid 8748
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -502,13 +502,13 @@ par Sim1.S2.periodicTrafficGen[0] srcAddr "\"S2\""
 par Sim1.S2.periodicTrafficGen[0] deadlineRel 0s
 attr unit s
 statistic Sim1.S2.periodicTrafficGen[0] E2EDelay:histogram
-field count 34
-field mean 6.4839529411765e-05
-field stddev 3.4978558388295e-05
+field count 26
+field mean 5.1204923076923e-05
+field stddev 2.7978194121741e-05
 field min 6.256e-06
-field max 0.000117648
-field sum 0.002204544
-field sqrsum 1.83317080576e-07
+field max 9.216e-05
+field sum 0.001331328
+field sqrsum 8.7740031488e-08
 attr recordingmode histogram
 attr source E2EDelay
 bin	-inf	0
@@ -561,32 +561,16 @@ bin	9e-05	1
 bin	9.2e-05	1
 bin	9.4e-05	0
 bin	9.6e-05	0
-bin	9.8e-05	1
+bin	9.8e-05	0
 bin	0.0001	0
 bin	0.000102	0
-bin	0.000104	1
-bin	0.000106	1
-bin	0.000108	1
-bin	0.00011	2
+bin	0.000104	0
+bin	0.000106	0
+bin	0.000108	0
+bin	0.00011	0
 bin	0.000112	0
-bin	0.000114	1
-bin	0.000116	1
-bin	0.000118	0
-bin	0.00012	0
-bin	0.000122	0
-bin	0.000124	0
-bin	0.000126	0
-bin	0.000128	0
-bin	0.00013	0
-bin	0.000132	0
-bin	0.000134	0
-bin	0.000136	0
-bin	0.000138	0
-bin	0.00014	0
-bin	0.000142	0
-bin	0.000144	0
-bin	0.000146	0
-scalar Sim1.S2.periodicTrafficGen[0] E2EDelay:mean 6.4839529411765e-05
+bin	0.000114	0
+scalar Sim1.S2.periodicTrafficGen[0] E2EDelay:mean 5.1204923076923e-05
 attr recordingmode mean
 attr source E2EDelay
 par Sim1.S2.appDispatcher typename "\"rtn_01.AppDispatcher\""
@@ -960,13 +944,13 @@ par Sim1.S4.periodicTrafficGen[0] srcAddr "\"S4\""
 par Sim1.S4.periodicTrafficGen[0] deadlineRel 0s
 attr unit s
 statistic Sim1.S4.periodicTrafficGen[0] E2EDelay:histogram
-field count 20
-field mean 6.50672e-05
-field stddev 3.2847230734192e-05
+field count 17
+field mean 5.8731294117647e-05
+field stddev 3.1569459553033e-05
 field min 1.0976e-05
-field max 0.000102544
-field sum 0.001301344
-field sqrsum 1.05174681088e-07
+field max 9.7824e-05
+field sum 0.000998432
+field sqrsum 7.4585295872e-08
 attr recordingmode histogram
 attr source E2EDelay
 bin	-inf	0
@@ -1019,9 +1003,9 @@ bin	9e-05	1
 bin	9.2e-05	0
 bin	9.4e-05	2
 bin	9.6e-05	2
-bin	9.8e-05	1
-bin	0.0001	1
-bin	0.000102	1
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
 bin	0.000104	0
 bin	0.000106	0
 bin	0.000108	0
@@ -1031,10 +1015,7 @@ bin	0.000114	0
 bin	0.000116	0
 bin	0.000118	0
 bin	0.00012	0
-bin	0.000122	0
-bin	0.000124	0
-bin	0.000126	0
-scalar Sim1.S4.periodicTrafficGen[0] E2EDelay:mean 6.50672e-05
+scalar Sim1.S4.periodicTrafficGen[0] E2EDelay:mean 5.8731294117647e-05
 attr recordingmode mean
 attr source E2EDelay
 par Sim1.S4.appDispatcher typename "\"rtn_01.AppDispatcher\""
@@ -1355,13 +1336,13 @@ par Sim1.S1.periodicTrafficGen[0] srcAddr "\"S1\""
 par Sim1.S1.periodicTrafficGen[0] deadlineRel 0s
 attr unit s
 statistic Sim1.S1.periodicTrafficGen[0] E2EDelay:histogram
-field count 48
-field mean 6.3471666666667e-05
-field stddev 3.6596288930177e-05
+field count 37
+field mean 4.7829189189189e-05
+field stddev 2.540032239279e-05
 field min 2.544e-06
-field max 0.000122352
-field sum 0.00304664
-field sqrsum 2.56321871616e-07
+field max 9.12e-05
+field sum 0.00176968
+field sqrsum 1.0786870912e-07
 attr recordingmode histogram
 attr source E2EDelay
 bin	-inf	0
@@ -1418,32 +1399,12 @@ bin	9.8e-05	0
 bin	0.0001	0
 bin	0.000102	0
 bin	0.000104	0
-bin	0.000106	1
+bin	0.000106	0
 bin	0.000108	0
-bin	0.00011	1
-bin	0.000112	1
-bin	0.000114	2
-bin	0.000116	2
-bin	0.000118	2
-bin	0.00012	1
-bin	0.000122	1
-bin	0.000124	0
-bin	0.000126	0
-bin	0.000128	0
-bin	0.00013	0
-bin	0.000132	0
-bin	0.000134	0
-bin	0.000136	0
-bin	0.000138	0
-bin	0.00014	0
-bin	0.000142	0
-bin	0.000144	0
-bin	0.000146	0
-bin	0.000148	0
-bin	0.00015	0
-bin	0.000152	0
-bin	0.000154	0
-scalar Sim1.S1.periodicTrafficGen[0] E2EDelay:mean 6.3471666666667e-05
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	0
+scalar Sim1.S1.periodicTrafficGen[0] E2EDelay:mean 4.7829189189189e-05
 attr recordingmode mean
 attr source E2EDelay
 par Sim1.S1.appDispatcher typename "\"rtn_01.AppDispatcher\""
@@ -1781,13 +1742,13 @@ par Sim1.S3.periodicTrafficGen[0] srcAddr "\"S3\""
 par Sim1.S3.periodicTrafficGen[0] deadlineRel 0s
 attr unit s
 statistic Sim1.S3.periodicTrafficGen[0] E2EDelay:histogram
-field count 27
-field mean 6.7075555555556e-05
-field stddev 3.7954953143201e-05
+field count 20
+field mean 4.94752e-05
+field stddev 2.6269315895967e-05
 field min 6.24e-06
-field max 0.000126128
-field sum 0.00181104
-field sqrsum 1.58931554304e-07
+field max 8.4592e-05
+field sum 0.000989504
+field sqrsum 6.2067370496e-08
 attr recordingmode histogram
 attr source E2EDelay
 bin	-inf	0
@@ -1843,35 +1804,9 @@ bin	9.6e-05	0
 bin	9.8e-05	0
 bin	0.0001	0
 bin	0.000102	0
-bin	0.000104	1
+bin	0.000104	0
 bin	0.000106	0
-bin	0.000108	1
-bin	0.00011	1
-bin	0.000112	0
-bin	0.000114	0
-bin	0.000116	0
-bin	0.000118	0
-bin	0.00012	1
-bin	0.000122	0
-bin	0.000124	2
-bin	0.000126	1
-bin	0.000128	0
-bin	0.00013	0
-bin	0.000132	0
-bin	0.000134	0
-bin	0.000136	0
-bin	0.000138	0
-bin	0.00014	0
-bin	0.000142	0
-bin	0.000144	0
-bin	0.000146	0
-bin	0.000148	0
-bin	0.00015	0
-bin	0.000152	0
-bin	0.000154	0
-bin	0.000156	0
-bin	0.000158	0
-scalar Sim1.S3.periodicTrafficGen[0] E2EDelay:mean 6.7075555555556e-05
+scalar Sim1.S3.periodicTrafficGen[0] E2EDelay:mean 4.94752e-05
 attr recordingmode mean
 attr source E2EDelay
 par Sim1.S3.appDispatcher typename "\"rtn_01.AppDispatcher\""

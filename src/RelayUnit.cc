@@ -18,7 +18,7 @@ void RelayUnit::handleMessage(cMessage *msg)
     const char* src = req->getSrc();
     const char* dest = req->getDst();
 
-    EV << "RelayUnit " << getParentModule()->getName() << " : Pacchetto da " << src << " a " << dest << " ricevuto sulla porta " << inPort << "\n";
+    //EV << "RelayUnit " << getParentModule()->getName() << " : Pacchetto da " << src << " a " << dest << " ricevuto sulla porta " << inPort << "\n";
 
     forwardingTable[src] = inPort;
 

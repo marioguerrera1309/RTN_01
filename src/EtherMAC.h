@@ -16,10 +16,9 @@ class EtherMAC : public cSimpleModule
 
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
-    //typedef cPacketQueue::CompareFunction CompareFunction;
     virtual void startTransmission();
     virtual bool vlanFilter(cPacket *pkt);
-
+    cOutVector dim;
     tx_state_t txstate;
     cPacketQueue txqueue;
     cPacket *rxbuf;
