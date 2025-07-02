@@ -13,11 +13,11 @@ void PeriodicTrafficGen::initialize()
     burstSize = par("burstSize");
     destAddr = par("destAddr").str();
     srcAddr = par("srcAddr").str();
-
     if(startTime > 0) {
         cMessage *timer = new cMessage("TxTimer");
         scheduleAt(startTime, timer);
     }
+    primoPacchetto = true;
 }
 
 void PeriodicTrafficGen::handleMessage(cMessage *msg)
@@ -29,7 +29,6 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
             scheduleAt(simTime()+par("period"), msg);
             return;
         }
-
         error("E' arrivato un self message non previsto");
     }
 
@@ -39,18 +38,28 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
         delete pkt;
         return;
     }
-
-
     EV << "EndNode: " << name.c_str() <<" Arrivato pacchetto no. " << pkt->getPktNumber()
             << ", di " << pkt->getBurstSize() << " da " << req->getSrc() << endl;
     simtime_t delay = simTime() - pkt->getGenTime();
+    if (primoPacchetto) {
+        minDelay = delay;
+        maxDelay = delay;
+        primoPacchetto = false;
+    } else {
+        if (delay < minDelay)
+            minDelay = delay;
+        if (delay > maxDelay)
+            maxDelay = delay;
+    }
     simsignal_t sig = registerSignal("E2EDelay");
     emit(sig, delay);
+    simtime_t AbsJitter = maxDelay - minDelay;
+    sig = registerSignal("AbsJitter");
+    emit(sig, AbsJitter);  
     if(pkt->getPktNumber() == pkt->getBurstSize()) {
         sig = registerSignal("E2EBurstDelay");
         emit(sig, delay);
     }
-
     delete pkt;
 }
 
@@ -63,16 +72,12 @@ void PeriodicTrafficGen::transmitPacket() {
     pkt->setDeadlineAbs(simTime() + pkt->getDeadlineRel());
     for(int i=0; i<burstSize; i++) {
         DataPacket *toSend = pkt->dup();
-
         EthTransmitReq *req = new EthTransmitReq();
         req->setSrc(srcAddr.c_str());
         req->setDst(destAddr.c_str());
         toSend->setControlInfo(req);
-
         toSend->setPktNumber(i+1);
-
         send(toSend, "lowerLayerOut");
     }
-
     delete pkt;
 }

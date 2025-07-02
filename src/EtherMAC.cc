@@ -27,7 +27,7 @@ void EtherMAC::initialize()
     } else {
         sprintf(nomeCoda, "txqueue_%s_%d", getParentModule()->getName(), getIndex());
     }
-    EV<< "Inizializzo la coda di trasmissione: " << nomeCoda << endl;
+    //EV<< "Inizializzo la coda di trasmissione: " << nomeCoda << endl;
     txqueue = cPacketQueue(nomeCoda, &EDFCompare);
     ifgdur = 96.0/(double)datarate;
     cValueArray *vlanArray = check_and_cast<cValueArray*>(par("vlans").objectValue());

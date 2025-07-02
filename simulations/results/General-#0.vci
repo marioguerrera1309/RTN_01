@@ -1,9 +1,9 @@
-                                                                
+file 6543927 1751451665                                         
 version 3
-run General-0-20250702-11:40:03-25268
+run General-0-20250702-12:17:40-18564
 attr configname General
-attr datetime 20250702-11:40:03
-attr datetimef 20250702-114003
+attr datetime 20250702-12:17:40
+attr datetimef 20250702-121740
 attr experiment General
 attr inifile sim1.ini
 attr iterationvars ""
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Sim1
-attr processid 25268
+attr processid 18564
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -307,201 +307,163 @@ config *.US4.ethController.etherMAC.vlans []
 vector 0 Sim1.LD2.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 1 Sim1.LD2.ethController.etherMAC txqueue:vector ETV
+vector 1 Sim1.LD2.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 2 Sim1.SW3.eth[0] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 3 Sim1.SW3.eth[1] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 4 Sim1.SW3.eth[2] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 5 Sim1.SW3.eth[3] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 6 Sim1.SW3.eth[4] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 7 Sim1.SW3.eth[5] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 8 Sim1.US2.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 2 Sim1.US2.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 9 Sim1.US2.ethController.etherMAC txqueue:vector ETV
+vector 3 Sim1.US2.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 10 Sim1.S2.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 11 Sim1.S2.ethController.etherMAC txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 12 Sim1.CU.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 4 Sim1.S2.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 13 Sim1.CU.ethController.etherMAC txqueue:vector ETV
+vector 5 Sim1.S2.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 14 Sim1.SW2.eth[0] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 15 Sim1.SW2.eth[1] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 16 Sim1.SW2.eth[2] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 17 Sim1.SW2.eth[3] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 18 Sim1.SW2.eth[4] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 19 Sim1.SW2.eth[5] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 20 Sim1.TLM.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 6 Sim1.CU.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 21 Sim1.TLM.periodicTrafficGen[1] E2EDelay:vector ETV
+vector 7 Sim1.CU.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 8 Sim1.TLM.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 22 Sim1.TLM.ethController.etherMAC txqueue:vector ETV
+vector 9 Sim1.TLM.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 23 Sim1.HU.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 24 Sim1.HU.ethController.etherMAC txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 25 Sim1.RS1.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 10 Sim1.TLM.periodicTrafficGen[1] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 26 Sim1.RS1.ethController.etherMAC txqueue:vector ETV
+vector 11 Sim1.TLM.periodicTrafficGen[1] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 27 Sim1.SW6.eth[0] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 28 Sim1.SW6.eth[1] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 29 Sim1.SW6.eth[2] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 30 Sim1.SW6.eth[3] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 31 Sim1.SW6.eth[4] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 32 Sim1.S4.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 12 Sim1.HU.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 33 Sim1.S4.ethController.etherMAC txqueue:vector ETV
+vector 13 Sim1.HU.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 34 Sim1.RC.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 35 Sim1.RC.ethController.etherMAC txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 36 Sim1.US3.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 14 Sim1.RS1.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 37 Sim1.US3.ethController.etherMAC txqueue:vector ETV
+vector 15 Sim1.RS1.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 38 Sim1.SW4.eth[0] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 39 Sim1.SW4.eth[1] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 40 Sim1.SW4.eth[2] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 41 Sim1.SW4.eth[3] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 42 Sim1.SW4.eth[4] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 43 Sim1.SW4.eth[5] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 44 Sim1.CM1.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 16 Sim1.S4.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 45 Sim1.CM1.ethController.etherMAC txqueue:vector ETV
+vector 17 Sim1.S4.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 46 Sim1.LD1.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 47 Sim1.LD1.ethController.etherMAC txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 48 Sim1.US1.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 18 Sim1.RC.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 49 Sim1.US1.ethController.etherMAC txqueue:vector ETV
+vector 19 Sim1.RC.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 50 Sim1.S1.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 51 Sim1.S1.ethController.etherMAC txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 52 Sim1.SW1.eth[0] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 53 Sim1.SW1.eth[1] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 54 Sim1.SW1.eth[2] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 55 Sim1.SW1.eth[3] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 56 Sim1.SW1.eth[4] txqueue:vector ETV
-attr recordingmode vector
-attr source txqueueDim
-vector 57 Sim1.ME.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 20 Sim1.US3.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 58 Sim1.ME.periodicTrafficGen[1] E2EDelay:vector ETV
+vector 21 Sim1.US3.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 22 Sim1.CM1.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 59 Sim1.ME.periodicTrafficGen[2] E2EDelay:vector ETV
+vector 23 Sim1.CM1.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 24 Sim1.LD1.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 60 Sim1.ME.periodicTrafficGen[3] E2EDelay:vector ETV
+vector 25 Sim1.LD1.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 26 Sim1.US1.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 61 Sim1.ME.periodicTrafficGen[4] E2EDelay:vector ETV
+vector 27 Sim1.US1.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 28 Sim1.S1.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 62 Sim1.ME.periodicTrafficGen[5] E2EDelay:vector ETV
+vector 29 Sim1.S1.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 30 Sim1.ME.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 63 Sim1.ME.ethController.etherMAC txqueue:vector ETV
+vector 31 Sim1.ME.periodicTrafficGen[0] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 64 Sim1.RS2.periodicTrafficGen[0] E2EDelay:vector ETV
+attr source AbsJitter
+vector 32 Sim1.ME.periodicTrafficGen[1] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 65 Sim1.RS2.ethController.etherMAC txqueue:vector ETV
+vector 33 Sim1.ME.periodicTrafficGen[1] AbsJitter:vector ETV
 attr recordingmode vector
-attr source txqueueDim
-vector 66 Sim1.SW5.eth[0] txqueue:vector ETV
+attr source AbsJitter
+vector 34 Sim1.ME.periodicTrafficGen[2] E2EDelay:vector ETV
 attr recordingmode vector
-attr s
+attr source E2EDelay
+vector 35 Sim1.ME.periodicTrafficGen[2] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 36 Sim1.ME.periodicTrafficGen[3] E2EDelay:vector ETV
+attr recordingmode vector
+attr source E2EDelay
+vector 37 Sim1.ME.periodicTrafficGen[3] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 38 Sim1.ME.periodicTrafficGen[4] E2EDelay:vector ETV
+attr recordingmode vector
+attr source E2EDelay
+vector 39 Sim1.ME.periodicTrafficGen[4] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 40 Sim1.ME.periodicTrafficGen[5] E2EDelay:vector ETV
+attr recordingmode vector
+attr source E2EDelay
+vector 41 Sim1.ME.periodicTrafficGen[5] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 42 Sim1.RS2.periodicTrafficGen[0] E2EDelay:vector ETV
+attr recordingmode vector
+attr source E2EDelay
+vector 43 Sim1.RS2.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 44 Sim1.S3.periodicTrafficGen[0] E2EDelay:vector ETV
+attr recordingmode vector
+attr source E2EDelay
+vector 45 Sim1.S3.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+vector 46 Sim1.US4.periodicTrafficGen[0] E2EDelay:vector ETV
+attr recordingmode vector
+attr source E2EDelay
+vector 47 Sim1.US4.periodicTrafficGen[0] AbsJitter:vector ETV
+attr recordingmode vector
+attr source AbsJitter
+4	19244 665707 941 16154628 1.000006256 1.068309376 19113 6.256e-06 0.068309376 657.399087184 29.956968573094
+5	684951 665709 941 16154628 1.000006256 1.068309376 19113 0 0.06830312 657.279516256 29.948743943751
+6	1350660 29 383 383 1.000003424 1.000003424 1 3.424e-06 3.424e-06 3.424e-06 1.1723776e-11
+7	1350689 21 383 383 1.000003424 1.000003424 1 0 0 0 0
+16	1350710 392197 1998 12496797 1.000010976 1.05284288 10922 1.0976e-05 0.05284288 350.560266384 14.527608917418
+17	1742907 392165 1998 12496797 1.000010976 1.05284288 10922 0 0.052831904 350.440386512 14.519914734252
+28	2135072 1054483 246 16796966 1.000002544 1.071025248 29429 2.544e-06 0.071025248 1095.417930176 54.439603414847
+29	3189555 1054530 246 16796966 1.000002544 1.071025248 29429 0 0.071022704 1095.3430628 54.43403011888
+44	4244085 564774 924 16796743 1.00000624 1.071024304 15771 6.24e-06 0.071024304 568.568859808 27.592739889273
+45	4808859 564755 924 16796743 1.00000624 1.071024304 15771 0 0.071018064 568.470448768 27.585644763988
+4	5373614 168308 17679299 20405052 1.074755952 1.086281248 4741 0.074755952 0.086281248 385.030778288 31.312582420745
+5	5541922 168307 17679299 20405052 1.074755952 1.086281248 4741 0.074749696 0.086274992 385.001118592 31.307765101198
+16	5710229 48398 19508593 20404829 1.082491088 1.086280304 1326 0.082491088 0.086280304 112.397603136 9.5289466171551
+17	5758627 48398 19508593 20404829 1.082491088 1.086280304 1326 0.082480112 0.086269328 112.38304896 9.5264794247177
+28	5807025 221527 16797412 18898889 1.071027136 1.079913008 6069 0.071027136 0.079913008 458.80801736 34.724578756037
+29	6028552 221528 16797412 18898889 1.071027136 1.079913008 6069 0.071024592 0.079910464 458.792577824 34.722244380123
+44	6250080 146921 16797189 19964079 1.071026192 1.084416832 4025 0.071026192 0.084416832 314.894076832 24.727089087629
+45	6397001 146924 16797189 19964079 1.071026192 1.084416832 4025 0.071019952 0.084410592 314.868960832 24.723159366274
+

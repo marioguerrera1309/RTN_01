@@ -14,6 +14,8 @@ simple PeriodicTrafficGen
         @display("i=block/app2");
         @signal[E2EDelay];
 	    @statistic[E2EDelay](source=E2EDelay; record=vector, histogram, mean);
+        @signal[AbsJitter];
+	    @statistic[AbsJitter](source=AbsJitter; record=vector, histogram, mean);
     gates:
         input lowerLayerIn;
         output lowerLayerOut;
