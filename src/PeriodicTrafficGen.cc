@@ -44,7 +44,6 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
     EV << "EndNode: " << name.c_str() <<" Arrivato pacchetto no. " << pkt->getPktNumber()
             << ", di " << pkt->getBurstSize() << " da " << req->getSrc() << endl;
     simtime_t delay = simTime() - pkt->getGenTime();
-    
     simsignal_t sig = registerSignal("E2EDelay");
     emit(sig, delay);
     if(pkt->getPktNumber() == pkt->getBurstSize()) {
