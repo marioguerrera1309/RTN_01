@@ -15,7 +15,6 @@ int EDFCompare(cObject *a, cObject *b) {
     if (ta > tb) return 1;
     return 0;
 }
-
 void EtherMAC::initialize()
 {
     txstate = TX_STATE_IDLE;
@@ -55,6 +54,7 @@ void EtherMAC::handleMessage(cMessage *msg)
                 rxbuf = nullptr;
                 return;
             }
+
             send(rxbuf, "upperLayerOut");
             rxbuf = nullptr;
         }

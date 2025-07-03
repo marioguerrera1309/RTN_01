@@ -13,10 +13,13 @@ class EtherMAC : public cSimpleModule
         TX_STATE_TX,
         TX_STATE_IFG
     } tx_state_t;
+
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+
     virtual void startTransmission();
     virtual bool vlanFilter(cPacket *pkt);
+
     tx_state_t txstate;
     cPacketQueue txqueue;
     cPacket *rxbuf;

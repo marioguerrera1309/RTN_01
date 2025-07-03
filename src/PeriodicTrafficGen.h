@@ -12,9 +12,7 @@ class PeriodicTrafficGen : public cSimpleModule {
     virtual void handleMessage(cMessage *msg) override;
 
     virtual void transmitPacket();
-    simtime_t maxDelay;
-    simtime_t minDelay;
-    bool primoPacchetto;
+
     simtime_t period;
     simtime_t startTime;
     string name;
