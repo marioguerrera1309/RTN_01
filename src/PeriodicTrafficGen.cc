@@ -14,7 +14,6 @@ void PeriodicTrafficGen::initialize()
     destAddr = par("destAddr").str();
     srcAddr = par("srcAddr").str();
     vlanid = par("vlanid");
-
     if(startTime > 0) {
         cMessage *timer = new cMessage("TxTimer");
         scheduleAt(startTime, timer);
@@ -42,22 +41,21 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
         return;
     }
     */
-
-
-    EV << "EndNode: " << name.c_str() <<" Arrivato pacchetto no. " << pkt->getPktNumber()
-            << ", di " << pkt->getBurstSize() << endl;
+    //EV << "EndNode: " << name.c_str() <<" Arrivato pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " questo pacchetto con deadlineAbs " << pkt->getDeadlineAbs() << " è arrivato a " << simTime() << endl;
     simtime_t delay = simTime() - pkt->getGenTime();
-    
+    if(simTime() > pkt->getDeadlineAbs()) {
+        EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " scaduto di "<< simTime()-pkt->getDeadlineAbs() <<" , deadlineRel: " << pkt->getDeadlineRel() << ", deadlineAbs: " << pkt->getDeadlineAbs() << ", genTime: " << pkt->getGenTime() << ", arrivato a: " << simTime() << endl;
+    } else {
+        EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " ricevuto, deadlineRel: " << pkt->getDeadlineRel() << ", deadlineAbs: " << pkt->getDeadlineAbs() << ", genTime: " << pkt->getGenTime() << ", arrivato a: " << simTime() << endl;
+    }
     simsignal_t sig = registerSignal("E2EDelay");
     emit(sig, delay);
     if(pkt->getPktNumber() == pkt->getBurstSize()) {
         sig = registerSignal("E2EBurstDelay");
         emit(sig, delay);
     }
-
     delete pkt;
 }
-
 void PeriodicTrafficGen::transmitPacket() {
     DataPacket *pkt = new DataPacket(name.c_str());
     pkt->setByteLength(payloadSize);
@@ -67,18 +65,14 @@ void PeriodicTrafficGen::transmitPacket() {
     pkt->setDeadlineAbs(simTime() + pkt->getDeadlineRel());
     for(int i=0; i<burstSize; i++) {
         DataPacket *toSend = pkt->dup();
-
         EthTransmitReq *req = new EthTransmitReq();
         req->setSrc(srcAddr.c_str());
         req->setDst(destAddr.c_str());
         req->setVlanid(vlanid);
         toSend->setControlInfo(req);
-        EV << "PeriodicTrafficGen: Inoltro EthTransmitReq con destinazione " << req->getDst() << " e sorgente " << req->getSrc() << " e vlanid "<< req->getVlanid() << " . " << vlanid << endl;
-
+        //EV << "PeriodicTrafficGen: Inoltro EthTransmitReq con destinazione " << req->getDst() << " e sorgente " << req->getSrc() << " e vlanid "<< req->getVlanid() << " . " << vlanid << endl;
         toSend->setPktNumber(i+1);
-
         send(toSend, "lowerLayerOut");
     }
-
     delete pkt;
 }

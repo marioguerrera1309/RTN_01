@@ -19,7 +19,7 @@ class EtherMAC : public cSimpleModule
 
     virtual void startTransmission();
     virtual bool vlanFilter(cPacket *pkt);
-
+    char nomeCoda[20];
     tx_state_t txstate;
     cPacketQueue txqueue;
     cPacket *rxbuf;

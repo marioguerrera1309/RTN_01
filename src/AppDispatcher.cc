@@ -26,19 +26,17 @@ void AppDispatcher::handleMessage(cMessage *msg)
         //EthTransmitReq *req = check_and_cast<EthTransmitReq *>(msg->getControlInfo());
         //EV << "Messaggio in arrivo dalla rete per AppDispatcher->ControlInfo-> src:  " << req->getSrc() << " , dst:" << req->getDst() << endl;
         for (int i = 0; i < gateSize("upperLayerOut"); i++) {
-            
             //EV<< "AppDispatcher: Inoltro a upperLayerOut[" << i << "]" << endl;
             send(msg->dup(), "upperLayerOut", i);
         }
-        
+        delete msg;
     }
     //messaggio in arrivo da un'applicazione
     else if (strcmp(msg->getArrivalGate()->getBaseName(), "upperLayerIn")==0) {
         // inoltro a lowerLayerOut
         //EthTransmitReq *req = check_and_cast<EthTransmitReq *>(msg->getControlInfo());
         //EV << "Messaggio in arrivo da un' app per AppDispatcher->ControlInfo-> src:  " << req->getSrc() << " , dst:" << req->getDst() << endl;
-        
         send(msg, "lowerLayerOut");
-        
+        //delete msg;        
     }
 }
