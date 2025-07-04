@@ -1,9 +1,9 @@
-file 243482 1751574040                                          
+file 2312636 1751587896                                         
 version 3
-run General-0-20250703-22:20:20-12756
+run General-0-20250704-02:11:04-20832
 attr configname General
-attr datetime 20250703-22:20:20
-attr datetimef 20250703-222020
+attr datetime 20250704-02:11:04
+attr datetimef 20250704-021104
 attr experiment General
 attr inifile sim1.ini
 attr iterationvars ""
@@ -11,14 +11,13 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Sim1
-attr processid 12756
+attr processid 20832
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config network Sim1
-config sim-time-limit 9000000s
 config **.scalar-recording true
 config **.vector-recording true
 config *.LD2.n 1
@@ -29,13 +28,11 @@ config *.LD2.periodicTrafficGen[*].payloadSize 1300B
 config *.LD2.periodicTrafficGen[*].burstSize 1
 config *.LD2.periodicTrafficGen[*].destAddr "\"CU\""
 config *.LD2.periodicTrafficGen[*].srcAddr "\"LD2\""
+config *.LD2.periodicTrafficGen[*].vlanid 1
 config *.LD2.periodicTrafficGen[*].deadlineRel 0.0014s
 config *.LD2.ethController.ethEncap.address "\"LD2\""
-config *.LD2.ethController.etherMAC.datarate 1Mbps
-config *.LD2.ethController.etherMAC.vlans []
-config *.SW3.portCount 6
-config *.SW3.eth[*].datarate 1Mbps
-config *.SW3.eth[*].vlans []
+config *.LD2.ethController.etherMAC.datarate 1Gbps
+config *.LD2.ethController.etherMAC.vlans [1]
 config *.US2.n 1
 config *.US2.periodicTrafficGen[*].period 0.1s
 config *.US2.periodicTrafficGen[*].startTime 1s
@@ -44,10 +41,11 @@ config *.US2.periodicTrafficGen[*].payloadSize 188B
 config *.US2.periodicTrafficGen[*].burstSize 1
 config *.US2.periodicTrafficGen[*].destAddr "\"CU\""
 config *.US2.periodicTrafficGen[*].srcAddr "\"US2\""
+config *.US2.periodicTrafficGen[*].vlanid 3
 config *.US2.periodicTrafficGen[*].deadlineRel 0.1s
 config *.US2.ethController.ethEncap.address "\"US2\""
-config *.US2.ethController.etherMAC.datarate 1Mbps
-config *.US2.ethController.etherMAC.vlans []
+config *.US2.ethController.etherMAC.datarate 1Gbps
+config *.US2.ethController.etherMAC.vlans [3]
 config *.S2.n 1
 config *.S2.periodicTrafficGen[*].period 0s
 config *.S2.periodicTrafficGen[*].startTime 0s
@@ -56,10 +54,11 @@ config *.S2.periodicTrafficGen[*].payloadSize 0B
 config *.S2.periodicTrafficGen[*].burstSize 0
 config *.S2.periodicTrafficGen[*].destAddr "\"\""
 config *.S2.periodicTrafficGen[*].srcAddr "\"S2\""
+config *.S2.periodicTrafficGen[*].vlanid 2
 config *.S2.periodicTrafficGen[*].deadlineRel 0s
 config *.S2.ethController.ethEncap.address "\"S2\""
-config *.S2.ethController.etherMAC.datarate 1Mbps
-config *.S2.ethController.etherMAC.vlans []
+config *.S2.ethController.etherMAC.datarate 1Gbps
+config *.S2.ethController.etherMAC.vlans [2]
 config *.CU.n 1
 config *.CU.periodicTrafficGen[*].period 0.01s
 config *.CU.periodicTrafficGen[*].startTime 1s
@@ -68,13 +67,11 @@ config *.CU.periodicTrafficGen[*].payloadSize 10500B
 config *.CU.periodicTrafficGen[*].burstSize 1
 config *.CU.periodicTrafficGen[*].destAddr "\"HU\""
 config *.CU.periodicTrafficGen[*].srcAddr "\"CU\""
+config *.CU.periodicTrafficGen[*].vlanid 4
 config *.CU.periodicTrafficGen[*].deadlineRel 0.01s
 config *.CU.ethController.ethEncap.address "\"CU\""
-config *.CU.ethController.etherMAC.datarate 1Mbps
-config *.CU.ethController.etherMAC.vlans []
-config *.SW2.portCount 6
-config *.SW2.eth[*].datarate 1Mbps
-config *.SW2.eth[*].vlans []
+config *.CU.ethController.etherMAC.datarate 1Gbps
+config *.CU.ethController.etherMAC.vlans "[4, 1, 3, 7]"
 config *.TLM.n 2
 config *.TLM.periodicTrafficGen[0].period 0.000625s
 config *.TLM.periodicTrafficGen[0].startTime 1s
@@ -92,9 +89,10 @@ config *.TLM.periodicTrafficGen[1].burstSize 1
 config *.TLM.periodicTrafficGen[1].destAddr "\"CU\""
 config *.TLM.periodicTrafficGen[1].srcAddr "\"TLM\""
 config *.TLM.periodicTrafficGen[1].deadlineRel 0.000625s
+config *.TLM.periodicTrafficGen[*].vlanid 7
 config *.TLM.ethController.ethEncap.address "\"TLM\""
-config *.TLM.ethController.etherMAC.datarate 1Mbps
-config *.TLM.ethController.etherMAC.vlans []
+config *.TLM.ethController.etherMAC.datarate 1Gbps
+config *.TLM.ethController.etherMAC.vlans [7]
 config *.HU.n 1
 config *.HU.periodicTrafficGen[*].period 0s
 config *.HU.periodicTrafficGen[*].startTime 0s
@@ -105,8 +103,8 @@ config *.HU.periodicTrafficGen[*].destAddr "\"\""
 config *.HU.periodicTrafficGen[*].srcAddr "\"HU\""
 config *.HU.periodicTrafficGen[*].deadlineRel 0s
 config *.HU.ethController.ethEncap.address "\"HU\""
-config *.HU.ethController.etherMAC.datarate 1Mbps
-config *.HU.ethController.etherMAC.vlans []
+config *.HU.ethController.etherMAC.datarate 1Gbps
+config *.HU.ethController.etherMAC.vlans "[4, 5, 7, 8]"
 config *.RS1.n 1
 config *.RS1.periodicTrafficGen[*].period 0s
 config *.RS1.periodicTrafficGen[*].startTime 0s
@@ -117,11 +115,8 @@ config *.RS1.periodicTrafficGen[*].destAddr "\"\""
 config *.RS1.periodicTrafficGen[*].srcAddr "\"RS1\""
 config *.RS1.periodicTrafficGen[*].deadlineRel 0s
 config *.RS1.ethController.ethEncap.address "\"RS1\""
-config *.RS1.ethController.etherMAC.datarate 1Mbps
-config *.RS1.ethController.etherMAC.vlans []
-config *.SW6.portCount 5
-config *.SW6.eth[*].datarate 1Mbps
-config *.SW6.eth[*].vlans []
+config *.RS1.ethController.etherMAC.datarate 1Gbps
+config *.RS1.ethController.etherMAC.vlans [6]
 config *.S4.n 1
 config *.S4.periodicTrafficGen[*].period 0s
 config *.S4.periodicTrafficGen[*].startTime 0s
@@ -132,8 +127,8 @@ config *.S4.periodicTrafficGen[*].destAddr "\"\""
 config *.S4.periodicTrafficGen[*].srcAddr "\"S4\""
 config *.S4.periodicTrafficGen[*].deadlineRel 0s
 config *.S4.ethController.ethEncap.address "\"S4\""
-config *.S4.ethController.etherMAC.datarate 1Mbps
-config *.S4.ethController.etherMAC.vlans []
+config *.S4.ethController.etherMAC.datarate 1Gbps
+config *.S4.ethController.etherMAC.vlans [2]
 config *.RC.n 1
 config *.RC.periodicTrafficGen[*].period 0.03333s
 config *.RC.periodicTrafficGen[*].startTime 1s
@@ -142,10 +137,11 @@ config *.RC.periodicTrafficGen[*].payloadSize 178000B
 config *.RC.periodicTrafficGen[*].burstSize 0
 config *.RC.periodicTrafficGen[*].destAddr "\"HU\""
 config *.RC.periodicTrafficGen[*].srcAddr "\"RC\""
+config *.RC.periodicTrafficGen[*].vlanid 8
 config *.RC.periodicTrafficGen[*].deadlineRel 0.03333s
 config *.RC.ethController.ethEncap.address "\"RC\""
-config *.RC.ethController.etherMAC.datarate 1Mbps
-config *.RC.ethController.etherMAC.vlans []
+config *.RC.ethController.etherMAC.datarate 1Gbps
+config *.RC.ethController.etherMAC.vlans [8]
 config *.US3.n 1
 config *.US3.periodicTrafficGen[*].period 0.1s
 config *.US3.periodicTrafficGen[*].startTime 1s
@@ -154,13 +150,11 @@ config *.US3.periodicTrafficGen[*].payloadSize 188B
 config *.US3.periodicTrafficGen[*].burstSize 1
 config *.US3.periodicTrafficGen[*].destAddr "\"CU\""
 config *.US3.periodicTrafficGen[*].srcAddr "\"US3\""
+config *.US3.periodicTrafficGen[*].vlanid 3
 config *.US3.periodicTrafficGen[*].deadlineRel 0.1s
 config *.US3.ethController.ethEncap.address "\"US3\""
-config *.US3.ethController.etherMAC.datarate 1Mbps
-config *.US3.ethController.etherMAC.vlans []
-config *.SW4.portCount 6
-config *.SW4.eth[*].datarate 1Mbps
-config *.SW4.eth[*].vlans []
+config *.US3.ethController.etherMAC.datarate 1Gbps
+config *.US3.ethController.etherMAC.vlans [3]
 config *.CM1.n 1
 config *.CM1.periodicTrafficGen[*].period 0.01666s
 config *.CM1.periodicTrafficGen[*].startTime 1s
@@ -169,10 +163,11 @@ config *.CM1.periodicTrafficGen[*].payloadSize 178500B
 config *.CM1.periodicTrafficGen[*].burstSize 1
 config *.CM1.periodicTrafficGen[*].destAddr "\"HU\""
 config *.CM1.periodicTrafficGen[*].srcAddr "\"CM1\""
+config *.CM1.periodicTrafficGen[*].vlanid 5
 config *.CM1.periodicTrafficGen[*].deadlineRel 0.01666s
 config *.CM1.ethController.ethEncap.address "\"CM1\""
-config *.CM1.ethController.etherMAC.datarate 1Mbps
-config *.CM1.ethController.etherMAC.vlans []
+config *.CM1.ethController.etherMAC.datarate 1Gbps
+config *.CM1.ethController.etherMAC.vlans [5]
 config *.LD1.n 1
 config *.LD1.periodicTrafficGen[*].period 0.0014s
 config *.LD1.periodicTrafficGen[*].startTime 1s
@@ -181,10 +176,11 @@ config *.LD1.periodicTrafficGen[*].payloadSize 1300B
 config *.LD1.periodicTrafficGen[*].burstSize 1
 config *.LD1.periodicTrafficGen[*].destAddr "\"CU\""
 config *.LD1.periodicTrafficGen[*].srcAddr "\"LD1\""
+config *.LD1.periodicTrafficGen[*].vlanid 1
 config *.LD1.periodicTrafficGen[*].deadlineRel 0.0014s
 config *.LD1.ethController.ethEncap.address "\"LD1\""
-config *.LD1.ethController.etherMAC.datarate 1Mbps
-config *.LD1.ethController.etherMAC.vlans []
+config *.LD1.ethController.etherMAC.datarate 1Gbps
+config *.LD1.ethController.etherMAC.vlans [1]
 config *.US1.n 1
 config *.US1.periodicTrafficGen[*].period 0.1s
 config *.US1.periodicTrafficGen[*].startTime 1s
@@ -193,10 +189,11 @@ config *.US1.periodicTrafficGen[*].payloadSize 188B
 config *.US1.periodicTrafficGen[*].burstSize 1
 config *.US1.periodicTrafficGen[*].destAddr "\"CU\""
 config *.US1.periodicTrafficGen[*].srcAddr "\"US1\""
+config *.US1.periodicTrafficGen[*].vlanid 3
 config *.US1.periodicTrafficGen[*].deadlineRel 0.1s
 config *.US1.ethController.ethEncap.address "\"US1\""
-config *.US1.ethController.etherMAC.datarate 1Mbps
-config *.US1.ethController.etherMAC.vlans []
+config *.US1.ethController.etherMAC.datarate 1Gbps
+config *.US1.ethController.etherMAC.vlans [3]
 config *.S1.n 1
 config *.S1.periodicTrafficGen[*].period 0s
 config *.S1.periodicTrafficGen[*].startTime 0s
@@ -207,11 +204,8 @@ config *.S1.periodicTrafficGen[*].destAddr "\"\""
 config *.S1.periodicTrafficGen[*].srcAddr "\"S1\""
 config *.S1.periodicTrafficGen[*].deadlineRel 0s
 config *.S1.ethController.ethEncap.address "\"S1\""
-config *.S1.ethController.etherMAC.datarate 1Mbps
-config *.S1.ethController.etherMAC.vlans []
-config *.SW1.portCount 5
-config *.SW1.eth[*].datarate 1Mbps
-config *.SW1.eth[*].vlans []
+config *.S1.ethController.etherMAC.datarate 1Gbps
+config *.S1.ethController.etherMAC.vlans [2]
 config *.ME.n 6
 config *.ME.periodicTrafficGen[0].period 0.000250s
 config *.ME.periodicTrafficGen[0].startTime 1s
@@ -220,6 +214,7 @@ config *.ME.periodicTrafficGen[0].payloadSize 80B
 config *.ME.periodicTrafficGen[0].burstSize 1
 config *.ME.periodicTrafficGen[0].destAddr "\"S1\""
 config *.ME.periodicTrafficGen[0].srcAddr "\"ME\""
+config *.ME.periodicTrafficGen[0].vlanid 2
 config *.ME.periodicTrafficGen[0].deadlineRel 0.000250s
 config *.ME.periodicTrafficGen[1].period 0.000250s
 config *.ME.periodicTrafficGen[1].startTime 1s
@@ -227,6 +222,7 @@ config *.ME.periodicTrafficGen[1].name "\"ME\""
 config *.ME.periodicTrafficGen[1].payloadSize 80B
 config *.ME.periodicTrafficGen[1].burstSize 1
 config *.ME.periodicTrafficGen[1].destAddr "\"S2\""
+config *.ME.periodicTrafficGen[1].vlanid 2
 config *.ME.periodicTrafficGen[1].srcAddr "\"ME\""
 config *.ME.periodicTrafficGen[1].deadlineRel 0.000250s
 config *.ME.periodicTrafficGen[2].period 0.000250s
@@ -235,6 +231,7 @@ config *.ME.periodicTrafficGen[2].name "\"ME\""
 config *.ME.periodicTrafficGen[2].payloadSize 80B
 config *.ME.periodicTrafficGen[2].burstSize 1
 config *.ME.periodicTrafficGen[2].destAddr "\"S3\""
+config *.ME.periodicTrafficGen[2].vlanid 2
 config *.ME.periodicTrafficGen[2].srcAddr "\"ME\""
 config *.ME.periodicTrafficGen[2].deadlineRel 0.000250s
 config *.ME.periodicTrafficGen[3].period 0.000250s
@@ -244,6 +241,7 @@ config *.ME.periodicTrafficGen[3].payloadSize 80B
 config *.ME.periodicTrafficGen[3].burstSize 1
 config *.ME.periodicTrafficGen[3].destAddr "\"S4\""
 config *.ME.periodicTrafficGen[3].srcAddr "\"ME\""
+config *.ME.periodicTrafficGen[3].vlanid 2
 config *.ME.periodicTrafficGen[3].deadlineRel 0.000250s
 config *.ME.periodicTrafficGen[4].period 0.03333s
 config *.ME.periodicTrafficGen[4].startTime 1s
@@ -252,6 +250,7 @@ config *.ME.periodicTrafficGen[4].payloadSize 178500B
 config *.ME.periodicTrafficGen[4].burstSize 1
 config *.ME.periodicTrafficGen[4].destAddr "\"RS1\""
 config *.ME.periodicTrafficGen[4].srcAddr "\"ME\""
+config *.ME.periodicTrafficGen[4].vlanid 6
 config *.ME.periodicTrafficGen[4].deadlineRel 0.03333s
 config *.ME.periodicTrafficGen[5].period 0.03333s
 config *.ME.periodicTrafficGen[5].startTime 1s
@@ -260,10 +259,11 @@ config *.ME.periodicTrafficGen[5].payloadSize 178500B
 config *.ME.periodicTrafficGen[5].burstSize 1
 config *.ME.periodicTrafficGen[5].destAddr "\"RS2\""
 config *.ME.periodicTrafficGen[5].srcAddr "\"ME\""
+config *.ME.periodicTrafficGen[5].vlanid 6
 config *.ME.periodicTrafficGen[5].deadlineRel 0.03333s
 config *.ME.ethController.ethEncap.address "\"ME\""
-config *.ME.ethController.etherMAC.datarate 1Mbps
-config *.ME.ethController.etherMAC.vlans []
+config *.ME.ethController.etherMAC.datarate 1Gbps
+config *.ME.ethController.etherMAC.vlans "[2, 6]"
 config *.RS2.n 1
 config *.RS2.periodicTrafficGen[*].period 0s
 config *.RS2.periodicTrafficGen[*].startTime 0s
@@ -274,11 +274,8 @@ config *.RS2.periodicTrafficGen[*].destAddr "\"\""
 config *.RS2.periodicTrafficGen[*].srcAddr "\"RS2\""
 config *.RS2.periodicTrafficGen[*].deadlineRel 0s
 config *.RS2.ethController.ethEncap.address "\"RS2\""
-config *.RS2.ethController.etherMAC.datarate 1Mbps
-config *.RS2.ethController.etherMAC.vlans []
-config *.SW5.portCount 4
-config *.SW5.eth[*].datarate 1Mbps
-config *.SW5.eth[*].vlans []
+config *.RS2.ethController.etherMAC.datarate 1Gbps
+config *.RS2.ethController.etherMAC.vlans [6]
 config *.S3.n 1
 config *.S3.periodicTrafficGen[*].period 0s
 config *.S3.periodicTrafficGen[*].startTime 0s
@@ -289,8 +286,8 @@ config *.S3.periodicTrafficGen[*].destAddr "\"\""
 config *.S3.periodicTrafficGen[*].srcAddr "\"S3\""
 config *.S3.periodicTrafficGen[*].deadlineRel 0s
 config *.S3.ethController.ethEncap.address "\"S3\""
-config *.S3.ethController.etherMAC.datarate 1Mbps
-config *.S3.ethController.etherMAC.vlans []
+config *.S3.ethController.etherMAC.datarate 1Gbps
+config *.S3.ethController.etherMAC.vlans [2]
 config *.US4.n 1
 config *.US4.periodicTrafficGen[*].period 0.1s
 config *.US4.periodicTrafficGen[*].startTime 1s
@@ -299,10 +296,55 @@ config *.US4.periodicTrafficGen[*].payloadSize 188B
 config *.US4.periodicTrafficGen[*].burstSize 1
 config *.US4.periodicTrafficGen[*].destAddr "\"CU\""
 config *.US4.periodicTrafficGen[*].srcAddr "\"US4\""
+config *.US4.periodicTrafficGen[*].vlanid 3
 config *.US4.periodicTrafficGen[*].deadlineRel 0.1s
 config *.US4.ethController.ethEncap.address "\"US4\""
-config *.US4.ethController.etherMAC.datarate 1Mbps
-config *.US4.ethController.etherMAC.vlans []
+config *.US4.ethController.etherMAC.datarate 1Gbps
+config *.US4.ethController.etherMAC.vlans [3]
+config *.SW1.portCount 5
+config *.SW1.eth[*].datarate 1Gbps
+config *.SW1.eth[0].vlans "[2, 6]"
+config *.SW1.eth[1].vlans [6]
+config *.SW1.eth[2].vlans "[2, 5]"
+config *.SW1.eth[3].vlans "[2, 3]"
+config *.SW1.eth[4].vlans "[2, 3, 5, 6]"
+config *.SW2.portCount 6
+config *.SW2.eth[*].datarate 1Gbps
+config *.SW2.eth[0].vlans [7]
+config *.SW2.eth[1].vlans "[4, 5, 7, 8]"
+config *.SW2.eth[2].vlans [6]
+config *.SW2.eth[3].vlans "[2, 3, 4, 5, 7]"
+config *.SW2.eth[4].vlans "[3, 8]"
+config *.SW2.eth[5].vlans "[2, 3, 5, 6]"
+config *.SW3.portCount 6
+config *.SW3.eth[*].datarate 1Gbps
+config *.SW3.eth[0].vlans [1]
+config *.SW3.eth[1].vlans [3]
+config *.SW3.eth[2].vlans [2]
+config *.SW3.eth[3].vlans "[1, 3, 7]"
+config *.SW3.eth[4].vlans "[2, 3, 5]"
+config *.SW3.eth[5].vlans "[2, 3, 4, 5, 7]"
+config *.SW4.portCount 6
+config *.SW4.eth[*].datarate 1Gbps
+config *.SW4.eth[0].vlans [5]
+config *.SW4.eth[1].vlans [1]
+config *.SW4.eth[2].vlans [3]
+config *.SW4.eth[3].vlans [2]
+config *.SW4.eth[4].vlans "[1, 2, 3, 5]"
+config *.SW4.eth[5].vlans "[2, 5]"
+config *.SW5.portCount 4
+config *.SW5.eth[*].datarate 1Gbps
+config *.SW5.eth[0].vlans [3]
+config *.SW5.eth[1].vlans [2]
+config *.SW5.eth[2].vlans "[2, 3]"
+config *.SW5.eth[3].vlans [2]
+config *.SW6.portCount 5
+config *.SW6.eth[*].datarate 1Gbps
+config *.SW6.eth[0].vlans [2]
+config *.SW6.eth[1].vlans [3]
+config *.SW6.eth[2].vlans [8]
+config *.SW6.eth[3].vlans "[2, 3]"
+config *.SW6.eth[4].vlans "[3, 8, 2]"
 
 vector 0 Sim1.LD2.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
@@ -376,9 +418,12 @@ attr source E2EDelay
 vector 23 Sim1.US4.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-2	16545 61102 1471 2442725 1.006256 8.494064 2177 0.006256 7.494064 8542.304368 44320.092617841
-3	77647 25 647 647 1.003424 1.003424 1 0.003424 0.003424 0.003424 1.1723776e-05
-8	77672 38305 2948 2149750 1.010976 7.604816 1364 0.010976 6.604816 5475.106912 28360.105213175
-14	115977 82333 446 2436283 1.002544 8.474224 2836 0.002544 7.474224 10253.40376 50260.23150078
-22	198310 45170 1430 2442403 1.00624 8.493104 1556 0.00624 7.493104 5464.64176 25599.042860547
+2	18257 626780 415 8653038 1.000004496 1.064044736 18241 4.496e-06 0.064044736 586.840314672 25.13790662407
+3	645037 1547 288 8514362 1.000003488 1.06302128 49 3.488e-06 2.128e-05 0.000994896 2.0922960128e-08
+6	646584 3280 1141 8614456 1.00001008 1.06376008 103 1.008e-05 1.008e-05 0.00103824 1.04654592e-08
+7	649864 34 553567 553567 1.004288816 1.004288816 1 0.004288816 0.004288816 0.004288816 1.8393942681856e-05
+8	649898 384172 688 8649499 1.000006448 1.06401872 11183 6.448e-06 0.06401872 353.638504864 14.918500964819
+14	1034070 767483 191 8653049 1.00000264 1.064044832 21702 2.64e-06 0.064044832 695.845671008 29.71450844825
+21	1801553 67 556211 5073845 1.00430824 1.03763824 2 0.00430824 0.00430824 0.00861648 3.71218637952e-05
+22	1801620 511014 439 8653487 1.000004592 1.064048096 14444 4.592e-06 0.064048096 462.078830816 19.767827463222
 

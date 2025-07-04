@@ -951,6 +951,7 @@ void EthTransmitReq::copy(const EthTransmitReq& other)
 {
     this->dst = other.dst;
     this->src = other.src;
+    this->vlanid = other.vlanid;
 }
 
 void EthTransmitReq::parsimPack(omnetpp::cCommBuffer *b) const
@@ -958,6 +959,7 @@ void EthTransmitReq::parsimPack(omnetpp::cCommBuffer *b) const
     ::omnetpp::cMessage::parsimPack(b);
     doParsimPacking(b,this->dst);
     doParsimPacking(b,this->src);
+    doParsimPacking(b,this->vlanid);
 }
 
 void EthTransmitReq::parsimUnpack(omnetpp::cCommBuffer *b)
@@ -965,6 +967,7 @@ void EthTransmitReq::parsimUnpack(omnetpp::cCommBuffer *b)
     ::omnetpp::cMessage::parsimUnpack(b);
     doParsimUnpacking(b,this->dst);
     doParsimUnpacking(b,this->src);
+    doParsimUnpacking(b,this->vlanid);
 }
 
 const char * EthTransmitReq::getDst() const
@@ -987,6 +990,16 @@ void EthTransmitReq::setSrc(const char * src)
     this->src = src;
 }
 
+int EthTransmitReq::getVlanid() const
+{
+    return this->vlanid;
+}
+
+void EthTransmitReq::setVlanid(int vlanid)
+{
+    this->vlanid = vlanid;
+}
+
 class EthTransmitReqDescriptor : public omnetpp::cClassDescriptor
 {
   private:
@@ -994,6 +1007,7 @@ class EthTransmitReqDescriptor : public omnetpp::cClassDescriptor
     enum FieldConstants {
         FIELD_dst,
         FIELD_src,
+        FIELD_vlanid,
     };
   public:
     EthTransmitReqDescriptor();
@@ -1060,7 +1074,7 @@ const char *EthTransmitReqDescriptor::getProperty(const char *propertyName) cons
 int EthTransmitReqDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
-    return base ? 2+base->getFieldCount() : 2;
+    return base ? 3+base->getFieldCount() : 3;
 }
 
 unsigned int EthTransmitReqDescriptor::getFieldTypeFlags(int field) const
@@ -1074,8 +1088,9 @@ unsigned int EthTransmitReqDescriptor::getFieldTypeFlags(int field) const
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,    // FIELD_dst
         FD_ISEDITABLE,    // FIELD_src
+        FD_ISEDITABLE,    // FIELD_vlanid
     };
-    return (field >= 0 && field < 2) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 3) ? fieldTypeFlags[field] : 0;
 }
 
 const char *EthTransmitReqDescriptor::getFieldName(int field) const
@@ -1089,8 +1104,9 @@ const char *EthTransmitReqDescriptor::getFieldName(int field) const
     static const char *fieldNames[] = {
         "dst",
         "src",
+        "vlanid",
     };
-    return (field >= 0 && field < 2) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 3) ? fieldNames[field] : nullptr;
 }
 
 int EthTransmitReqDescriptor::findField(const char *fieldName) const
@@ -1099,6 +1115,7 @@ int EthTransmitReqDescriptor::findField(const char *fieldName) const
     int baseIndex = base ? base->getFieldCount() : 0;
     if (strcmp(fieldName, "dst") == 0) return baseIndex + 0;
     if (strcmp(fieldName, "src") == 0) return baseIndex + 1;
+    if (strcmp(fieldName, "vlanid") == 0) return baseIndex + 2;
     return base ? base->findField(fieldName) : -1;
 }
 
@@ -1113,8 +1130,9 @@ const char *EthTransmitReqDescriptor::getFieldTypeString(int field) const
     static const char *fieldTypeStrings[] = {
         "string",    // FIELD_dst
         "string",    // FIELD_src
+        "int",    // FIELD_vlanid
     };
-    return (field >= 0 && field < 2) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 3) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **EthTransmitReqDescriptor::getFieldPropertyNames(int field) const
@@ -1199,6 +1217,7 @@ std::string EthTransmitReqDescriptor::getFieldValueAsString(omnetpp::any_ptr obj
     switch (field) {
         case FIELD_dst: return oppstring2string(pp->getDst());
         case FIELD_src: return oppstring2string(pp->getSrc());
+        case FIELD_vlanid: return long2string(pp->getVlanid());
         default: return "";
     }
 }
@@ -1217,6 +1236,7 @@ void EthTransmitReqDescriptor::setFieldValueAsString(omnetpp::any_ptr object, in
     switch (field) {
         case FIELD_dst: pp->setDst((value)); break;
         case FIELD_src: pp->setSrc((value)); break;
+        case FIELD_vlanid: pp->setVlanid(string2long(value)); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'EthTransmitReq'", field);
     }
 }
@@ -1233,6 +1253,7 @@ omnetpp::cValue EthTransmitReqDescriptor::getFieldValue(omnetpp::any_ptr object,
     switch (field) {
         case FIELD_dst: return pp->getDst();
         case FIELD_src: return pp->getSrc();
+        case FIELD_vlanid: return pp->getVlanid();
         default: throw omnetpp::cRuntimeError("Cannot return field %d of class 'EthTransmitReq' as cValue -- field index out of range?", field);
     }
 }
@@ -1251,6 +1272,7 @@ void EthTransmitReqDescriptor::setFieldValue(omnetpp::any_ptr object, int field,
     switch (field) {
         case FIELD_dst: pp->setDst(value.stringValue()); break;
         case FIELD_src: pp->setSrc(value.stringValue()); break;
+        case FIELD_vlanid: pp->setVlanid(omnetpp::checked_int_cast<int>(value.intValue())); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'EthTransmitReq'", field);
     }
 }

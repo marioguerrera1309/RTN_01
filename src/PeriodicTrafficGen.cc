@@ -13,6 +13,7 @@ void PeriodicTrafficGen::initialize()
     burstSize = par("burstSize");
     destAddr = par("destAddr").str();
     srcAddr = par("srcAddr").str();
+    vlanid = par("vlanid");
 
     if(startTime > 0) {
         cMessage *timer = new cMessage("TxTimer");
@@ -34,15 +35,17 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
     }
 
     DataPacket *pkt = check_and_cast<DataPacket *>(msg);
-    EthTransmitReq *req = check_and_cast<EthTransmitReq *>(pkt->getControlInfo());
+    //EthTransmitReq *req = check_and_cast<EthTransmitReq *>(pkt->getControlInfo());
+    /*
     if(strcmp(req->getDst(), name.c_str()) != 0) {
         delete pkt;
         return;
     }
+    */
 
 
     EV << "EndNode: " << name.c_str() <<" Arrivato pacchetto no. " << pkt->getPktNumber()
-            << ", di " << pkt->getBurstSize() << " da " << req->getSrc() << endl;
+            << ", di " << pkt->getBurstSize() << endl;
     simtime_t delay = simTime() - pkt->getGenTime();
     
     simsignal_t sig = registerSignal("E2EDelay");
@@ -68,7 +71,9 @@ void PeriodicTrafficGen::transmitPacket() {
         EthTransmitReq *req = new EthTransmitReq();
         req->setSrc(srcAddr.c_str());
         req->setDst(destAddr.c_str());
+        req->setVlanid(vlanid);
         toSend->setControlInfo(req);
+        EV << "PeriodicTrafficGen: Inoltro EthTransmitReq con destinazione " << req->getDst() << " e sorgente " << req->getSrc() << " e vlanid "<< req->getVlanid() << " . " << vlanid << endl;
 
         toSend->setPktNumber(i+1);
 

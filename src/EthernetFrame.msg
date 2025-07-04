@@ -14,4 +14,5 @@ packet EthernetQFrame extends EthernetFrame {
 message EthTransmitReq {
     string dst;
     string src;
+    int vlanid;
 }

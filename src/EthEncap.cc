@@ -14,12 +14,22 @@ void EthEncap::handleMessage(cMessage *msg)
         /* Gestire il messaggio arrivato dai livelli superiori */
         /* Inoltrarlo alla rete incapsulando il payload in un EthernetFrame */
         cPacket *payload = check_and_cast<cPacket *>(msg);
-        EthernetFrame *frame = new EthernetFrame();
-        frame->setSrc(address.c_str());
         EthTransmitReq *req = check_and_cast<EthTransmitReq *>(msg->getControlInfo());
-        frame->setDst(req->getDst());
-        frame->setControlInfo(req->dup());
-        frame->encapsulate(payload);
+        EV << "EthEncap: Ricevuto EthTransmitReq con destinazione " << req->getDst() << " e sorgente " << req->getSrc() << " e vlanId " << req->getVlanid() << endl;
+        EthernetFrame *frame = new EthernetFrame("EthernetFrame");
+        if(req->getVlanid() != -1) {
+            EthernetQFrame *qframe = new EthernetQFrame("EthernetQFrame");
+            qframe->setVlanid(req->getVlanid());
+            qframe->setSrc(req->getSrc());
+            qframe->setDst(req->getDst());
+            qframe->encapsulate(payload);
+            frame = qframe;
+            EV << "EthEncap: Inviato frame EthernetQ con destinazione " << qframe->getDst() << " e sorgente " << qframe->getSrc() << endl;
+        } else {
+            frame->setSrc(req->getSrc());
+            frame->setDst(req->getDst());
+            frame->encapsulate(payload);
+        }
         send(frame, "lowerLayerOut");
         //EV<< "EthEncap:Inviato frame Ethernet con destinazione " << frame->getDst() << " e sorgente " << frame->getSrc() << endl;
         //EV << "EthEncap->ControlInfo: " << payload->getControlInfo() << endl;

@@ -65,7 +65,7 @@ void EtherMAC::handleMessage(cMessage *msg)
     
     if(pkt->getArrivalGate() == gate("upperLayerIn")) {
         if(vlanFilter(pkt)) {
-            EV_DEBUG << "VlanId non registrato" << endl;
+            EV << "VlanId non registrato" << endl;
             delete msg;
             return;
         }
@@ -119,7 +119,7 @@ void EtherMAC::startTransmission() {
 
     cPacket *pkt = txqueue.pop();
     simtime_t txdur = (double)pkt->getBitLength()/(double)datarate;
-    EthTransmitReq *req = check_and_cast<EthTransmitReq *>(pkt->getControlInfo());
+    //EthTransmitReq *req = check_and_cast<EthTransmitReq *>(pkt->getControlInfo());
     //EV<< "EtherMAC: Inizio trasmissione pacchetto con destinazione " << req->getDst() << endl;
     send(pkt, "channelOut");
     cMessage *txtim = new cMessage("TxTimer");

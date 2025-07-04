@@ -20,6 +20,7 @@ class PeriodicTrafficGen : public cSimpleModule {
     unsigned int burstSize;
     string destAddr;
     string srcAddr;
+    int vlanid;
     simtime_t deadlineRel;
     simtime_t deadlineAbs;
 };

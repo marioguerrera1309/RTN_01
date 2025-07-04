@@ -10,6 +10,7 @@ simple PeriodicTrafficGen
         int burstSize = default(1);
         string destAddr = default("");
         string srcAddr;
+        int vlanid = default(-1);
         double deadlineRel @unit(s);
         @display("i=block/app2");
         @signal[E2EDelay];

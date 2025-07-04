@@ -115,6 +115,7 @@ inline void doParsimUnpacking(omnetpp::cCommBuffer *b, EthernetQFrame& obj) {obj
  * {
  *     string dst;
  *     string src;
+ *     int vlanid;
  * }
  * </pre>
  */
@@ -123,6 +124,7 @@ class EthTransmitReq : public ::omnetpp::cMessage
   protected:
     omnetpp::opp_string dst;
     omnetpp::opp_string src;
+    int vlanid = 0;
 
   private:
     void copy(const EthTransmitReq& other);
@@ -144,6 +146,9 @@ class EthTransmitReq : public ::omnetpp::cMessage
 
     virtual const char * getSrc() const;
     virtual void setSrc(const char * src);
+
+    virtual int getVlanid() const;
+    virtual void setVlanid(int vlanid);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const EthTransmitReq& obj) {obj.parsimPack(b);}
