@@ -26,8 +26,8 @@ void EtherMAC::initialize()
         sprintf(nomeCoda, "txqueue_%s_%d", getParentModule()->getName(), getIndex());
     }
     //EV<< "Inizializzo la coda di trasmissione: " << nomeCoda << endl;
-    //txqueue = cPacketQueue(nomeCoda, &EDFCompare);
-    txqueue = cPacketQueue(nomeCoda);
+    txqueue = cPacketQueue(nomeCoda, &EDFCompare);
+    //txqueue = cPacketQueue(nomeCoda);
     ifgdur = 96.0/(double)datarate;
     cValueArray *vlanArray = check_and_cast<cValueArray*>(par("vlans").objectValue());
     for (int i = 0; i < vlanArray->size(); ++i) {
@@ -78,7 +78,9 @@ void EtherMAC::handleMessage(cMessage *msg)
         }
         */
         txqueue.insert(pkt);
-        EV << nomeCoda << " dimensione coda: " << txqueue.getLength() <<endl;
+        if(txqueue.getLength() > 1) {
+            EV << nomeCoda << " dimensione coda: " << txqueue.getLength() <<endl;
+        }
         simsignal_t sig = registerSignal("lenghtQueue");
         emit(sig, txqueue.getLength());
         if(txstate == TX_STATE_IDLE) {
@@ -127,13 +129,14 @@ void EtherMAC::startTransmission() {
         return;
     }
     cPacket *pkt = txqueue.pop();
-    EV << nomeCoda << " dimensione coda: " << txqueue.getLength() <<endl;
+    //EV << nomeCoda << " dimensione coda: " << txqueue.getLength() <<endl;
     simsignal_t sig = registerSignal("lenghtQueue");
     emit(sig, txqueue.getLength());
     simtime_t txdur = (double)pkt->getBitLength()/(double)datarate;
     //EthTransmitReq *req = check_and_cast<EthTransmitReq *>(pkt->getControlInfo());
     //EV<< "EtherMAC: Inizio trasmissione pacchetto con destinazione " << req->getDst() << endl;
-    send(pkt, "channelOut");
+    send(pkt->dup(), "channelOut");
+    delete pkt;
     cMessage *txtim = new cMessage("TxTimer");
     scheduleAt(simTime()+txdur, txtim);
     txstate = TX_STATE_TX;

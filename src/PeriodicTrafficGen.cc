@@ -29,7 +29,6 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
             scheduleAt(simTime()+par("period"), msg);
             return;
         }
-
         error("E' arrivato un self message non previsto");
     }
 
@@ -43,20 +42,19 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
     */
     //EV << "EndNode: " << name.c_str() <<" Arrivato pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " questo pacchetto con deadlineAbs " << pkt->getDeadlineAbs() << " è arrivato a " << simTime() << endl;
     simtime_t delay = simTime() - pkt->getGenTime();
-    /*if(simTime() > pkt->getDeadlineAbs()) {
-        if(pkt->getNumFrammenti() > 0) {
-            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " scaduto di "<< simTime()-pkt->getDeadlineAbs() <<" , deadlineRel: " << pkt->getDeadlineRel() << ", deadlineAbs: " << pkt->getDeadlineAbs() << ", genTime: " << pkt->getGenTime() << ", arrivato a: " << simTime() << ", idFrammento: " << pkt->getIdFrammento() << ", numFrammenti: " << pkt->getNumFrammenti() << endl;
+    if(simTime() > pkt->getDeadlineAbs()) {
+        if(pkt->getNumFrammenti()>0) {
+            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << "frammento no. " << pkt->getIdFrammento() << ", di " << pkt->getNumFrammenti() <<" , deadlineAbs " << pkt->getDeadlineAbs() << " è arrivato a " << simTime() << " in ritardo di " << delay << endl;
         } else {
-            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " scaduto di "<< simTime()-pkt->getDeadlineAbs() <<" , deadlineRel: " << pkt->getDeadlineRel() << ", deadlineAbs: " << pkt->getDeadlineAbs() << ", genTime: " << pkt->getGenTime() << ", arrivato a: " << simTime() << endl;
+            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " , deadlineAbs " << pkt->getDeadlineAbs() << " è arrivato a " << simTime() << " in ritardo di " << delay << endl;
         }
     } else {
-        if(pkt->getNumFrammenti() > 0) {
-            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " ricevuto in tempo, deadlineRel: " << pkt->getDeadlineRel() << ", deadlineAbs: " << pkt->getDeadlineAbs() << ", genTime: " << pkt->getGenTime() << ", arrivato a: " << simTime() << ", idFrammento: " << pkt->getIdFrammento() << ", numFrammenti: " << pkt->getNumFrammenti() << endl;
+        if(pkt->getNumFrammenti()>0) {
+            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << "frammento no. " << pkt->getIdFrammento() << ", di " << pkt->getNumFrammenti() <<" , deadlineAbs " << pkt->getDeadlineAbs() << " è arrivato a " << simTime() << " in orario con ritardo di " << delay << endl;
         } else {
-            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " ricevuto in tempo, deadlineRel: " << pkt->getDeadlineRel() << ", deadlineAbs: " << pkt->getDeadlineAbs() << ", genTime: " << pkt->getGenTime() << ", arrivato a: " << simTime() << endl;
+            EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " , deadlineAbs " << pkt->getDeadlineAbs() << " è arrivato a " << simTime() << " in orario con ritardo di " << delay << endl;
         }
-    }*/
-    EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " ricevuto, deadlineRel: " << pkt->getDeadlineRel() << ", deadlineAbs: " << pkt->getDeadlineAbs() << ", genTime: " << pkt->getGenTime() << ", idFrammento: " << pkt->getIdFrammento() << ", numFrammenti: " << pkt->getNumFrammenti() << endl;
+    }
     simsignal_t sig = registerSignal("E2EDelay");
     emit(sig, delay);
     if(pkt->getPktNumber() == pkt->getBurstSize()) {
