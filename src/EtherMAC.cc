@@ -25,9 +25,10 @@ void EtherMAC::initialize()
     } else {
         sprintf(nomeCoda, "txqueue_%s_%d", getParentModule()->getName(), getIndex());
     }
+    max=0;
     //EV<< "Inizializzo la coda di trasmissione: " << nomeCoda << endl;
-    txqueue = cPacketQueue(nomeCoda, &EDFCompare);
-    //txqueue = cPacketQueue(nomeCoda);
+    //txqueue = cPacketQueue(nomeCoda, &EDFCompare);
+    txqueue = cPacketQueue(nomeCoda);
     ifgdur = 96.0/(double)datarate;
     cValueArray *vlanArray = check_and_cast<cValueArray*>(par("vlans").objectValue());
     for (int i = 0; i < vlanArray->size(); ++i) {
@@ -75,11 +76,11 @@ void EtherMAC::handleMessage(cMessage *msg)
             EV << "Coda di trasmissione piena, pacchetto scartato!" << endl;
             delete pkt;
             return;
-        }
-        */
+            }
+            */
         txqueue.insert(pkt);
-        if(txqueue.getLength() > 1) {
-            EV << nomeCoda << " dimensione coda: " << txqueue.getLength() <<endl;
+        if(txqueue.getLength() > max) {
+            max = txqueue.getLength();
         }
         simsignal_t sig = registerSignal("lenghtQueue");
         emit(sig, txqueue.getLength());
@@ -140,4 +141,17 @@ void EtherMAC::startTransmission() {
     cMessage *txtim = new cMessage("TxTimer");
     scheduleAt(simTime()+txdur, txtim);
     txstate = TX_STATE_TX;
+}
+
+void EtherMAC::finish()
+{
+    cModule *parent = getParentModule();
+    if(parent != nullptr) {
+        cModule *grandparent = parent->getParentModule();
+        if(grandparent != nullptr) {
+            EV << "Coda di trasmissione " << nomeCoda << " ha raggiunto la dimensione massima di " << max << endl;
+            recordScalar("maxQueueLenght", max);
+        }
+    }
+    cSimpleModule::finish();
 }

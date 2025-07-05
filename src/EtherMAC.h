@@ -16,13 +16,14 @@ class EtherMAC : public cSimpleModule
 
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
-
     virtual void startTransmission();
     virtual bool vlanFilter(cPacket *pkt);
+    virtual void finish() override;
     char nomeCoda[20];
     tx_state_t txstate;
     cPacketQueue txqueue;
     cPacket *rxbuf;
+    int max;
     uint64_t datarate;
     simtime_t ifgdur;
     std::vector<int> vlans;

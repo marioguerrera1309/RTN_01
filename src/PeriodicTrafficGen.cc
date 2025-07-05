@@ -18,6 +18,8 @@ void PeriodicTrafficGen::initialize()
         cMessage *timer = new cMessage("TxTimer");
         scheduleAt(startTime, timer);
     }
+    frameRicevute = 0;
+    frameInviate = 0;
 }
 
 void PeriodicTrafficGen::handleMessage(cMessage *msg)
@@ -55,6 +57,7 @@ void PeriodicTrafficGen::handleMessage(cMessage *msg)
             EV << "EndNode: " << name.c_str() <<" Pacchetto no. " << pkt->getPktNumber() << ", di " << pkt->getBurstSize() << " , deadlineAbs " << pkt->getDeadlineAbs() << " è arrivato a " << simTime() << " in orario con ritardo di " << delay << endl;
         }
     }
+    frameRicevute++;
     simsignal_t sig = registerSignal("E2EDelay");
     emit(sig, delay);
     if(pkt->getPktNumber() == pkt->getBurstSize()) {
@@ -98,6 +101,7 @@ void PeriodicTrafficGen::transmitPacket() {
                 req->setVlanid(vlanid);
                 //EV << "PeriodicTrafficGen: Inoltro EthTransmitReq con destinazione " << req->getDst() << " e sorgente " << req->getSrc() << " e vlanid "<< req->getVlanid() << " . " << vlanid << endl;
                 toSend->setControlInfo(req);
+                frameInviate++;
                 send(toSend, "lowerLayerOut");
             }
             //EV << "totFrammenti(calcolato): " << totFrammenti << ", numFrammenti: " << numFrammenti << endl;
@@ -118,8 +122,19 @@ void PeriodicTrafficGen::transmitPacket() {
             toSend->setControlInfo(req);
             //EV << "PeriodicTrafficGen: Inoltro EthTransmitReq con destinazione " << req->getDst() << " e sorgente " << req->getSrc() << " e vlanid "<< req->getVlanid() << " . " << vlanid << endl;
             toSend->setPktNumber(i+1);
+            frameInviate++;
             send(toSend, "lowerLayerOut");
         }
     }
     delete pkt;
+}
+
+void PeriodicTrafficGen::finish()
+{
+    simsignal_t sig = registerSignal("frameRicevute");
+    emit(sig, frameRicevute);
+    EV << "EndNode: " << name.c_str() << " ha ricevuto " << frameRicevute << " frame" << endl;
+    sig = registerSignal("frameInviate");
+    emit(sig, frameInviate);
+    EV << "EndNode: " << name.c_str() << " ha inviato " << frameInviate << " frame" << endl;
 }
