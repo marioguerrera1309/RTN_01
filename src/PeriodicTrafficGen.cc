@@ -102,7 +102,7 @@ void PeriodicTrafficGen::transmitPacket() {
                 toSend->setControlInfo(req);
                 send(toSend, "lowerLayerOut");
             }
-            EV << "totFrammenti(calcolato): " << totFrammenti << ", numFrammenti: " << numFrammenti << endl;
+            //EV << "totFrammenti(calcolato): " << totFrammenti << ", numFrammenti: " << numFrammenti << endl;
         }
 
     } else {

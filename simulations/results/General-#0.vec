@@ -1,8 +1,8 @@
 version 3
-run General-0-20250705-10:09:20-16784
+run General-0-20250705-10:53:19-9720
 attr configname General
-attr datetime 20250705-10:09:20
-attr datetimef 20250705-100920
+attr datetime 20250705-10:53:19
+attr datetimef 20250705-105319
 attr experiment General
 attr inifile sim1.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Sim1
-attr processid 16784
+attr processid 9720
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -348,73 +348,136 @@ config *.SW6.eth[4].vlans "[1, 2, 3, 4, 5, 6, 7, 8]"
 vector 0 Sim1.LD2.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 1 Sim1.US2.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 1 Sim1.LD2.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 2 Sim1.SW3.eth[0] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 3 Sim1.SW3.eth[1] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 4 Sim1.SW3.eth[2] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 5 Sim1.SW3.eth[3] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 6 Sim1.SW3.eth[4] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 7 Sim1.SW3.eth[5] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 8 Sim1.US2.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 2 Sim1.S2.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 9 Sim1.US2.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 10 Sim1.S2.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 3 Sim1.CU.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 11 Sim1.S2.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 12 Sim1.CU.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 4 Sim1.TLM.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 13 Sim1.CU.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 14 Sim1.SW2.eth[0] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 15 Sim1.SW2.eth[1] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 16 Sim1.SW2.eth[2] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 17 Sim1.SW2.eth[3] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 18 Sim1.SW2.eth[4] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 19 Sim1.SW2.eth[5] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 20 Sim1.TLM.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 5 Sim1.TLM.periodicTrafficGen[1] E2EDelay:vector ETV
+vector 21 Sim1.TLM.periodicTrafficGen[1] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 6 Sim1.HU.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 22 Sim1.TLM.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 23 Sim1.HU.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 7 Sim1.RS1.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 24 Sim1.HU.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 25 Sim1.RS1.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 8 Sim1.S4.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 26 Sim1.RS1.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 27 Sim1.SW6.eth[0] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 28 Sim1.SW6.eth[1] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 29 Sim1.SW6.eth[2] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 30 Sim1.SW6.eth[3] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 31 Sim1.SW6.eth[4] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 32 Sim1.S4.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 9 Sim1.RC.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 33 Sim1.S4.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 34 Sim1.RC.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 10 Sim1.US3.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 35 Sim1.RC.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 36 Sim1.US3.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 11 Sim1.CM1.periodicTrafficGen[0] E2EDelay:vector ETV
+vector 37 Sim1.US3.ethController.etherMAC lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 38 Sim1.SW4.eth[0] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 39 Sim1.SW4.eth[1] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 40 Sim1.SW4.eth[2] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 41 Sim1.SW4.eth[3] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 42 Sim1.SW4.eth[4] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 43 Sim1.SW4.eth[5] lenghtQueue:vector ETV
+attr recordingmode vector
+attr source lenghtQueue
+vector 44 Sim1.CM1.periodicTrafficGen[0] E2EDelay:vector ETV
 attr recordingmode vector
 attr source E2EDelay
-vector 12 Sim1.LD1.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 13 Sim1.US1.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 14 Sim1.S1.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 15 Sim1.ME.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 16 Sim1.ME.periodicTrafficGen[1] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 17 Sim1.ME.periodicTrafficGen[2] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 18 Sim1.ME.periodicTrafficGen[3] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 19 Sim1.ME.periodicTrafficGen[4] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 20 Sim1.ME.periodicTrafficGen[5] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 21 Sim1.RS2.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 22 Sim1.S3.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-vector 23 Sim1.US4.periodicTrafficGen[0] E2EDelay:vector ETV
-attr recordingmode vector
-attr source E2EDelay
-
+vector 45 Sim1.CM1.ethController.etherMAC lenghtQueue:

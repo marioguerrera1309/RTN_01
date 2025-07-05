@@ -78,6 +78,9 @@ void EtherMAC::handleMessage(cMessage *msg)
         }
         */
         txqueue.insert(pkt);
+        EV << nomeCoda << " dimensione coda: " << txqueue.getLength() <<endl;
+        simsignal_t sig = registerSignal("lenghtQueue");
+        emit(sig, txqueue.getLength());
         if(txstate == TX_STATE_IDLE) {
             startTransmission();
         }
@@ -125,6 +128,8 @@ void EtherMAC::startTransmission() {
     }
     cPacket *pkt = txqueue.pop();
     EV << nomeCoda << " dimensione coda: " << txqueue.getLength() <<endl;
+    simsignal_t sig = registerSignal("lenghtQueue");
+    emit(sig, txqueue.getLength());
     simtime_t txdur = (double)pkt->getBitLength()/(double)datarate;
     //EthTransmitReq *req = check_and_cast<EthTransmitReq *>(pkt->getControlInfo());
     //EV<< "EtherMAC: Inizio trasmissione pacchetto con destinazione " << req->getDst() << endl;
