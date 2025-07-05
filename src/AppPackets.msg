@@ -4,4 +4,6 @@ packet DataPacket {
     int burstSize;
     simtime_t deadlineRel;
     simtime_t deadlineAbs;
+    int idFrammento;
+    int numFrammenti;
 }

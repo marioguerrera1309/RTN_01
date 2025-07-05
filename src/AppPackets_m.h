@@ -27,6 +27,8 @@ class DataPacket;
  *     int burstSize;
  *     simtime_t deadlineRel;
  *     simtime_t deadlineAbs;
+ *     int idFrammento;
+ *     int numFrammenti;
  * }
  * </pre>
  */
@@ -38,6 +40,8 @@ class DataPacket : public ::omnetpp::cPacket
     int burstSize = 0;
     omnetpp::simtime_t deadlineRel = SIMTIME_ZERO;
     omnetpp::simtime_t deadlineAbs = SIMTIME_ZERO;
+    int idFrammento = 0;
+    int numFrammenti = 0;
 
   private:
     void copy(const DataPacket& other);
@@ -68,6 +72,12 @@ class DataPacket : public ::omnetpp::cPacket
 
     virtual omnetpp::simtime_t getDeadlineAbs() const;
     virtual void setDeadlineAbs(omnetpp::simtime_t deadlineAbs);
+
+    virtual int getIdFrammento() const;
+    virtual void setIdFrammento(int idFrammento);
+
+    virtual int getNumFrammenti() const;
+    virtual void setNumFrammenti(int numFrammenti);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const DataPacket& obj) {obj.parsimPack(b);}

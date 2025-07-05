@@ -70,6 +70,13 @@ void EtherMAC::handleMessage(cMessage *msg)
             return;
         }
         //EV << "EtherMac->ControlInfo: " << pkt->getControlInfo() << endl;
+        /*
+        if(txqueue.getLength() > 100) {
+            EV << "Coda di trasmissione piena, pacchetto scartato!" << endl;
+            delete pkt;
+            return;
+        }
+        */
         txqueue.insert(pkt);
         if(txstate == TX_STATE_IDLE) {
             startTransmission();

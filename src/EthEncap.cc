@@ -32,7 +32,7 @@ void EthEncap::handleMessage(cMessage *msg)
             //EV<< "EthEncap: Inviato frame Ethernet con destinazione " << frame->getDst() << " e sorgente " << frame->getSrc() << endl;
         }
         send(frame->dup(), "lowerLayerOut");
-        delete frame; // Deleting the original frame after sending
+        delete frame;
         //EV<< "EthEncap:Inviato frame Ethernet con destinazione " << frame->getDst() << " e sorgente " << frame->getSrc() << endl;
         //EV << "EthEncap->ControlInfo: " << payload->getControlInfo() << endl;
     }
@@ -41,14 +41,14 @@ void EthEncap::handleMessage(cMessage *msg)
      * inviare solo il payload ai livelli superiori */
     else if(msg->getArrivalGate() == gate("lowerLayerIn")) {
         EthernetFrame *frame = dynamic_cast<EthernetFrame *>(msg);
-        if(frame->getDst() == address) {
+        if(strcmp(frame->getDst(), address.c_str()) == 0) {
             cPacket *payload = frame->decapsulate();
-            EthTransmitReq *req = new EthTransmitReq();
-            req->setSrc(frame->getSrc());
-            req->setDst(frame->getDst());
-            if (payload->getControlInfo() != nullptr)
-                delete payload->removeControlInfo();
-            payload->setControlInfo(req);
+            //EthTransmitReq *req = new EthTransmitReq();
+            //req->setSrc(frame->getSrc());
+            //req->setDst(frame->getDst());
+            //if (payload->getControlInfo() != nullptr)
+             //   delete payload->removeControlInfo();
+            //payload->setControlInfo(req);
             //EV << "EthEncap:Ricevuto frame Ethernet con destinazione " << frame->getDst() << " e sorgente " << frame->getSrc() << endl;
             send(payload, "upperLayerOut");
             delete frame;

@@ -180,6 +180,8 @@ void DataPacket::copy(const DataPacket& other)
     this->burstSize = other.burstSize;
     this->deadlineRel = other.deadlineRel;
     this->deadlineAbs = other.deadlineAbs;
+    this->idFrammento = other.idFrammento;
+    this->numFrammenti = other.numFrammenti;
 }
 
 void DataPacket::parsimPack(omnetpp::cCommBuffer *b) const
@@ -190,6 +192,8 @@ void DataPacket::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->burstSize);
     doParsimPacking(b,this->deadlineRel);
     doParsimPacking(b,this->deadlineAbs);
+    doParsimPacking(b,this->idFrammento);
+    doParsimPacking(b,this->numFrammenti);
 }
 
 void DataPacket::parsimUnpack(omnetpp::cCommBuffer *b)
@@ -200,6 +204,8 @@ void DataPacket::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->burstSize);
     doParsimUnpacking(b,this->deadlineRel);
     doParsimUnpacking(b,this->deadlineAbs);
+    doParsimUnpacking(b,this->idFrammento);
+    doParsimUnpacking(b,this->numFrammenti);
 }
 
 omnetpp::simtime_t DataPacket::getGenTime() const
@@ -252,6 +258,26 @@ void DataPacket::setDeadlineAbs(omnetpp::simtime_t deadlineAbs)
     this->deadlineAbs = deadlineAbs;
 }
 
+int DataPacket::getIdFrammento() const
+{
+    return this->idFrammento;
+}
+
+void DataPacket::setIdFrammento(int idFrammento)
+{
+    this->idFrammento = idFrammento;
+}
+
+int DataPacket::getNumFrammenti() const
+{
+    return this->numFrammenti;
+}
+
+void DataPacket::setNumFrammenti(int numFrammenti)
+{
+    this->numFrammenti = numFrammenti;
+}
+
 class DataPacketDescriptor : public omnetpp::cClassDescriptor
 {
   private:
@@ -262,6 +288,8 @@ class DataPacketDescriptor : public omnetpp::cClassDescriptor
         FIELD_burstSize,
         FIELD_deadlineRel,
         FIELD_deadlineAbs,
+        FIELD_idFrammento,
+        FIELD_numFrammenti,
     };
   public:
     DataPacketDescriptor();
@@ -328,7 +356,7 @@ const char *DataPacketDescriptor::getProperty(const char *propertyName) const
 int DataPacketDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
-    return base ? 5+base->getFieldCount() : 5;
+    return base ? 7+base->getFieldCount() : 7;
 }
 
 unsigned int DataPacketDescriptor::getFieldTypeFlags(int field) const
@@ -345,8 +373,10 @@ unsigned int DataPacketDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,    // FIELD_burstSize
         FD_ISEDITABLE,    // FIELD_deadlineRel
         FD_ISEDITABLE,    // FIELD_deadlineAbs
+        FD_ISEDITABLE,    // FIELD_idFrammento
+        FD_ISEDITABLE,    // FIELD_numFrammenti
     };
-    return (field >= 0 && field < 5) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 7) ? fieldTypeFlags[field] : 0;
 }
 
 const char *DataPacketDescriptor::getFieldName(int field) const
@@ -363,8 +393,10 @@ const char *DataPacketDescriptor::getFieldName(int field) const
         "burstSize",
         "deadlineRel",
         "deadlineAbs",
+        "idFrammento",
+        "numFrammenti",
     };
-    return (field >= 0 && field < 5) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 7) ? fieldNames[field] : nullptr;
 }
 
 int DataPacketDescriptor::findField(const char *fieldName) const
@@ -376,6 +408,8 @@ int DataPacketDescriptor::findField(const char *fieldName) const
     if (strcmp(fieldName, "burstSize") == 0) return baseIndex + 2;
     if (strcmp(fieldName, "deadlineRel") == 0) return baseIndex + 3;
     if (strcmp(fieldName, "deadlineAbs") == 0) return baseIndex + 4;
+    if (strcmp(fieldName, "idFrammento") == 0) return baseIndex + 5;
+    if (strcmp(fieldName, "numFrammenti") == 0) return baseIndex + 6;
     return base ? base->findField(fieldName) : -1;
 }
 
@@ -393,8 +427,10 @@ const char *DataPacketDescriptor::getFieldTypeString(int field) const
         "int",    // FIELD_burstSize
         "omnetpp::simtime_t",    // FIELD_deadlineRel
         "omnetpp::simtime_t",    // FIELD_deadlineAbs
+        "int",    // FIELD_idFrammento
+        "int",    // FIELD_numFrammenti
     };
-    return (field >= 0 && field < 5) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 7) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **DataPacketDescriptor::getFieldPropertyNames(int field) const
@@ -482,6 +518,8 @@ std::string DataPacketDescriptor::getFieldValueAsString(omnetpp::any_ptr object,
         case FIELD_burstSize: return long2string(pp->getBurstSize());
         case FIELD_deadlineRel: return simtime2string(pp->getDeadlineRel());
         case FIELD_deadlineAbs: return simtime2string(pp->getDeadlineAbs());
+        case FIELD_idFrammento: return long2string(pp->getIdFrammento());
+        case FIELD_numFrammenti: return long2string(pp->getNumFrammenti());
         default: return "";
     }
 }
@@ -503,6 +541,8 @@ void DataPacketDescriptor::setFieldValueAsString(omnetpp::any_ptr object, int fi
         case FIELD_burstSize: pp->setBurstSize(string2long(value)); break;
         case FIELD_deadlineRel: pp->setDeadlineRel(string2simtime(value)); break;
         case FIELD_deadlineAbs: pp->setDeadlineAbs(string2simtime(value)); break;
+        case FIELD_idFrammento: pp->setIdFrammento(string2long(value)); break;
+        case FIELD_numFrammenti: pp->setNumFrammenti(string2long(value)); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'DataPacket'", field);
     }
 }
@@ -522,6 +562,8 @@ omnetpp::cValue DataPacketDescriptor::getFieldValue(omnetpp::any_ptr object, int
         case FIELD_burstSize: return pp->getBurstSize();
         case FIELD_deadlineRel: return pp->getDeadlineRel().dbl();
         case FIELD_deadlineAbs: return pp->getDeadlineAbs().dbl();
+        case FIELD_idFrammento: return pp->getIdFrammento();
+        case FIELD_numFrammenti: return pp->getNumFrammenti();
         default: throw omnetpp::cRuntimeError("Cannot return field %d of class 'DataPacket' as cValue -- field index out of range?", field);
     }
 }
@@ -543,6 +585,8 @@ void DataPacketDescriptor::setFieldValue(omnetpp::any_ptr object, int field, int
         case FIELD_burstSize: pp->setBurstSize(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_deadlineRel: pp->setDeadlineRel(value.doubleValue()); break;
         case FIELD_deadlineAbs: pp->setDeadlineAbs(value.doubleValue()); break;
+        case FIELD_idFrammento: pp->setIdFrammento(omnetpp::checked_int_cast<int>(value.intValue())); break;
+        case FIELD_numFrammenti: pp->setNumFrammenti(omnetpp::checked_int_cast<int>(value.intValue())); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'DataPacket'", field);
     }
 }
